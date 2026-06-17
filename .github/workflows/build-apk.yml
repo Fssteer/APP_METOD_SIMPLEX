@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout código
+      - name: Checkout codigo
         uses: actions/checkout@v4
 
       - name: Configurar Python 3.11
@@ -38,13 +38,9 @@ jobs:
         run: yes | flutter doctor --android-licenses || true
 
       - name: Build APK
-        run: |
-          echo "y" | flet build apk \
-            --project "SimplexIO" \
-            --description "Método Simplex - Universidad de Panamá" \
-            --org "edu.up.io"
+        run: echo "y" | flet build apk --project "SimplexIO" --org "edu.up.io"
 
-      - name: Subir APK como Artifact
+      - name: Subir APK
         uses: actions/upload-artifact@v4
         with:
           name: simplex-apk
